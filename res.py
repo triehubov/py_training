@@ -2,13 +2,9 @@
 import re
 
 ipin = str(input("Input IP here\n"))
-match = re.search(r'\d\d?\d?\.\d\d?\d?\.\d\d?\d?\.\d\d?\d?', ipin)
+match = re.search(r"^((25[0-5]|2[0-4]\d|[01]?[0-9][0-9]?)(\.)){3}(25[0-5]|2[0-4]\d|[01]?[0-9][0-9]?)$", ipin)
+
 if match is not None:
-    ipspl = (match.group()).split('.')
-    for i in ipspl:
-        if int(i) > 255:
-            print("Not Valid IP")
-            break
     print("Valid IP: ", match.group())
 else:
     print("Is not an IP")
